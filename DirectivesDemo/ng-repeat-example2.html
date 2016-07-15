@@ -3,61 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>点击换样式的列表</title>
-    <style>
-        .done{
-            background-color: greenyellow;
-        }
-        .pending{
-            background-color: #2aabd2;
-        }
-    </style>
 </head>
 <script src="../node_modules/angular/angular.js"></script>
+<script src="js/app.js"></script>
+<link href="css/example2.css" rel="stylesheet" type="text/css" />
 <body ng-controller="MainCtrl as ctrl">
 
   <div ng-repeat="note in ctrl.notes" ng-class="ctrl.getClass(note.done)" ng-click="ctrl.changeStyle(note.label)">
       <span class="label">{{note.label}}</span>
   </div>
-<!--实现可以点击换样式的列表-->
-<script>
-    angular.module("note_app", [])
-            .controller('MainCtrl', [function () {
-                var self = this;
-                self.notes = [
-                    {label: 'First'},
-                    {label: 'Second'},
-                    {label: 'Third'},
-                    {label: 'Last'}
-                ];
-
-                self.getClass = function (status) {
-                    return {
-                        done: status,
-                        pending: !status
-                    };
-                };
-                self.changeStyle = function (id) {
-                    for (var i in self.notes){
-                        if(self.notes[i].label == id){
-                            self.notes[i].done = true;
-                            continue;
-                        }
-                        self.notes[i].done = false;
-                    };
-                };
-                /*初始化数组状态*/
-                self.initList = function () {
-                    for (var i in self.notes){
-                        if(i == 0){
-                            self.notes[i].done = true;
-                            continue;
-                        }
-                        self.notes[i].done = false;
-                    };
-                };
-                self.initList();
-            }]);
-</script>
 
 </body>
 </html>
