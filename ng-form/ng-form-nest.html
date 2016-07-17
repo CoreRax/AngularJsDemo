@@ -2,18 +2,26 @@
 <html lang="en" ng-app="notesApp">
 <head>
     <meta charset="UTF-8">
-    <title>表单</title>
+    <title>表单错误提示</title>
+    <style>
+        .username.ng-valid {
+            background-color: #2aabd2;
+        }
+        .username.ng-dirty.ng-invalid-required{
+            background-color: red;
+        }.username.ng-dirty.ng-invalid-minlength{
+            background-color: lightpink;
+                 }
+    </style>
 </head>
 <body ng-controller="MainCtrl as ctrl">
   <form ng-submit="ctrl.submit()" name="myForm">
       <input type="text"
+             class="username"
+             name="uname"
              ng-model="ctrl.user.username"
              required
              ng-minlength="4">
-      <input type="password"
-             ng-model="ctrl.user.password"
-             required>
-      <input type="date">
       <input type="submit"
              value="submit"
       ng-disabled="myForm.$invalid">

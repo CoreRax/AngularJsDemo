@@ -2,17 +2,32 @@
 <html lang="en" ng-app="notesApp">
 <head>
     <meta charset="UTF-8">
-    <title>表单</title>
+    <title>表单错误提示</title>
 </head>
 <body ng-controller="MainCtrl as ctrl">
   <form ng-submit="ctrl.submit()" name="myForm">
       <input type="text"
+             name="uname"
              ng-model="ctrl.user.username"
              required
              ng-minlength="4">
+      <span ng-show="myForm.uname.$error.required">
+          这是必填字段
+      </span>
+      <span ng-show="myForm.uname.$error.minlength">
+          最小长度为4
+      </span>
+      <span ng-show="myForm.uname.$error.$invalid">
+          填写非法
+      </span>
       <input type="password"
+             name="pwd"
              ng-model="ctrl.user.password"
              required>
+      <span ng-show="myForm.pwd.$error.req
+      uired">
+          这是必填字段
+      </span>
       <input type="date">
       <input type="submit"
              value="submit"
