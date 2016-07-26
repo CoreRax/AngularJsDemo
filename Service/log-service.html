@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>$log服务</title>
+    <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body ng-controller="MainCtrl as mainctrl">
+  <h1>Hello Service</h1>
+  <button ng-click="mainctrl.logStuff()">Log somrthing</button>
+
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', ['$log', function ($log) {
+                var self = this;
+                self.logStuff = function () {
+                    $log.log('The button was pressed');
+                };
+            }]);
+</script>
+</body>
+</html>

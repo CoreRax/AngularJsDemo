@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>复选框显示信息</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+  <div>
+      <h2>What are your favorite sports?</h2>
+      <div ng-repeat="sport in ctrl.sports">
+          <label ng-bind="sport.label"></label>
+          <div>
+              With Binding:
+              <input type="checkbox"
+              ng-model="sport.selected"
+              ng-true>
+          </div>
+      </div>
+  </div>
+ 
+  <script src="../node_modules/angular/angular.js"></script>
+  <script type="text/javascript">
+      angular.module('notesApp', [])
+              .controller('MainCtrl', [function () {
+                  var self = this;
+                  self.submit = function () {
+                      console.log('User clicked submit with ',self.user)
+                  };
+              }]);
+  </script>
+</body>
+</html>
